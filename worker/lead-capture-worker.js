@@ -26,7 +26,6 @@ export default {
     try {
       const data = await request.json()
 
-      // Validate required fields
       if (!data.email || !data.firstName) {
         return new Response(
           JSON.stringify({ error: 'Missing required fields' }),
@@ -34,14 +33,15 @@ export default {
         )
       }
 
-      // Determine lead type from referrer page
       const leadInfo = parseLeadType(data.referrerPage || '')
 
-      // Fire both simultaneously
-      const [zapierResult, resendResult] = await Promise.all([
+      let zapierStatus = 'not fired'
+      let resendStatus = 'not fired'
+      let resendBody = {}
 
-        // 1. Create GHL contact via Zapier
-        fetch(env.ZAPIER_WEBHOOK_URL, {
+      // Fire Zapier
+      try {
+        const zapierRes = await fetch(env.ZAPIER_WEBHOOK_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -56,10 +56,15 @@ export default {
             tags: leadInfo.tags,
             timestamp: new Date().toISOString()
           })
-        }),
+        })
+        zapierStatus = zapierRes.status
+      } catch(e) {
+        zapierStatus = 'ERROR: ' + e.message
+      }
 
-        // 2. Send welcome email via Resend
-        fetch('https://api.resend.com/emails', {
+      // Fire Resend
+      try {
+        const resendRes = await fetch('https://api.resend.com/emails', {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${env.RESEND_API_KEY}`,
@@ -72,23 +77,31 @@ export default {
             html: getEmailTemplate(leadInfo, data.firstName)
           })
         })
-
-      ])
+        resendBody = await resendRes.json()
+        resendStatus = resendRes.status
+      } catch(e) {
+        resendStatus = 'ERROR: ' + e.message
+        resendBody = { message: e.message }
+      }
 
       return new Response(
         JSON.stringify({
           success: true,
-          message: 'Lead captured and email sent'
+          debug: {
+            zapier: zapierStatus,
+            resend: resendStatus,
+            resendResponse: resendBody,
+            leadType: leadInfo.leadType,
+            specificNeed: leadInfo.specificNeed,
+            fromEmail: env.FROM_EMAIL
+          }
         }),
-        {
-          status: 200,
-          headers: corsHeaders(env)
-        }
+        { status: 200, headers: corsHeaders(env) }
       )
 
     } catch (error) {
       return new Response(
-        JSON.stringify({ error: 'Server error' }),
+        JSON.stringify({ error: 'Server error', message: error.message }),
         { status: 500, headers: corsHeaders(env) }
       )
     }
