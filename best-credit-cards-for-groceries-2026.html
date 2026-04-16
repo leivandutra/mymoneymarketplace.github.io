@@ -180,6 +180,97 @@
         @media (max-width: 768px) {
             .hero h1 { font-size: 28px; } .hero-subtitle { font-size: 16px; } .earnings-bar-inner { flex-direction: column; gap: 16px; } .earnings-divider { width: 60px; height: 1px; } .card-stats { display: grid; grid-template-columns: 1fr 1fr; } .card-pros-cons { grid-template-columns: 1fr; } .card-cta { width: 100%; } .trust-row { display: grid; grid-template-columns: 1fr 1fr; text-align: left; } .header-cta { padding: 6px 14px; font-size: 13px; } .bottom-cta h2 { font-size: 24px; }
         }
+    
+        /* card-visual-upgraded-v1 */
+        /* Realistic card mockup (upgraded from flat placeholder) */
+        .card-visual {
+            position: relative;
+            width: 104px;
+            height: 64px;
+            border-radius: 8px;
+            overflow: hidden;
+            flex-shrink: 0;
+            display: block;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-visual:hover {
+            transform: translateY(-4px) rotate(-1.5deg);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.28);
+        }
+        .card-visual::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.20) 45%, rgba(255,255,255,0.05) 55%, transparent 70%);
+            pointer-events: none;
+            z-index: 2;
+        }
+        .card-visual .cv-chip {
+            position: absolute;
+            top: 9px;
+            left: 9px;
+            width: 14px;
+            height: 10px;
+            background: linear-gradient(135deg, #f9d67a 0%, #d4a545 55%, #a37a22 100%);
+            border-radius: 2px;
+            box-shadow: inset 0 0 0 0.5px rgba(0,0,0,0.3), inset 1px 1px 0 rgba(255,255,255,0.35);
+            z-index: 1;
+        }
+        .card-visual .cv-chip::after {
+            content: '';
+            position: absolute;
+            inset: 1.5px;
+            border-radius: 1px;
+            background:
+                linear-gradient(to right, transparent 46%, rgba(0,0,0,0.28) 46%, rgba(0,0,0,0.28) 54%, transparent 54%),
+                linear-gradient(to bottom, transparent 30%, rgba(0,0,0,0.28) 30%, rgba(0,0,0,0.28) 38%, transparent 38%, transparent 62%, rgba(0,0,0,0.28) 62%, rgba(0,0,0,0.28) 70%, transparent 70%);
+        }
+        .card-visual .cv-dots {
+            position: absolute;
+            bottom: 22px;
+            left: 9px;
+            right: 9px;
+            color: rgba(255,255,255,0.85);
+            font-family: 'Courier New', monospace;
+            font-size: 8px;
+            letter-spacing: 1.5px;
+            line-height: 1;
+            z-index: 1;
+        }
+        .card-visual .cv-name {
+            position: absolute;
+            bottom: 7px;
+            left: 9px;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 7px;
+            letter-spacing: 0.4px;
+            text-transform: uppercase;
+            max-width: 62%;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            line-height: 1;
+            z-index: 1;
+        }
+        .card-visual .cv-network {
+            position: absolute;
+            bottom: 5px;
+            right: 7px;
+            color: rgba(255,255,255,0.95);
+            font-family: Arial, sans-serif;
+            font-weight: 900;
+            font-style: italic;
+            font-size: 9px;
+            letter-spacing: 0.5px;
+            line-height: 1;
+            z-index: 1;
+        }
+        /* Legacy span (no longer rendered, but keep rule harmless) */
+        .card-visual > span { display: none; }
+
     </style>
 </head>
 <body>
@@ -213,15 +304,15 @@
         <h2 class="section-title">Best Grocery Credit Cards -- April 2026</h2>
         <p class="section-sub">Rankings based on grocery reward rates, annual caps, and overall value for supermarket spending. Card terms subject to change.</p>
 
-        <div class="card-review"><div class="card-top"><div class="card-info"><div class="card-rank">#1</div><div class="card-visual" style="background: linear-gradient(135deg, #006fcf, #003087);"><span>AMEX</span></div><div><h3>Blue Cash Preferred from Amex</h3><div class="card-best-for">Best for Grocery Cash Back</div></div></div><div class="card-rating"><span class="card-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="card-rating-num">4.9/5</span></div></div><div class="card-stats"><div class="card-stat-pill"><span class="stat-label">Grocery Rate</span><span class="stat-value">6% U.S. supermarkets (up to $6K/yr)</span></div><div class="card-stat-pill"><span class="stat-label">Other Rewards</span><span class="stat-value">6% streaming, 3% gas/transit</span></div><div class="card-stat-pill"><span class="stat-label">Annual Fee</span><span class="stat-value">$0 intro, then $95</span></div><div class="card-stat-pill"><span class="stat-label">Credit Needed</span><span class="stat-value">Good (670+)</span></div></div><div class="card-divider"></div><div class="card-pros-cons"><div class="pros"><div class="pros-title">PROS</div><ul><li>Industry-leading 6% at supermarkets</li><li>6% on streaming (Netflix, Disney+, etc.)</li><li>3% at gas stations</li><li>$0 fee first year</li></ul></div><div class="cons"><div class="cons-title">CONS</div><ul><li>$95 fee after year 1</li><li>6% capped at $6,000/year then 1%</li><li>Does not include Walmart/Target</li></ul></div></div><a href="https://www.cardratings.com/bestcards/cash-back-credit-cards.php?src=705663" class="card-cta">Compare Grocery Cards &rarr;</a><p class="card-disclaimer">Rates and offers subject to change. Verify terms before applying.</p></div>
+        <div class="card-review"><div class="card-top"><div class="card-info"><div class="card-rank">#1</div><div class="card-visual" data-issuer="AMEX" style="background: linear-gradient(135deg, #006FCF, #00175A);"><div class="cv-chip"></div><div class="cv-dots">●●●● ●●●● ●●●● 1234</div><div class="cv-name">from Amex</div><div class="cv-network">AMEX</div></div><div><h3>Blue Cash Preferred from Amex</h3><div class="card-best-for">Best for Grocery Cash Back</div></div></div><div class="card-rating"><span class="card-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="card-rating-num">4.9/5</span></div></div><div class="card-stats"><div class="card-stat-pill"><span class="stat-label">Grocery Rate</span><span class="stat-value">6% U.S. supermarkets (up to $6K/yr)</span></div><div class="card-stat-pill"><span class="stat-label">Other Rewards</span><span class="stat-value">6% streaming, 3% gas/transit</span></div><div class="card-stat-pill"><span class="stat-label">Annual Fee</span><span class="stat-value">$0 intro, then $95</span></div><div class="card-stat-pill"><span class="stat-label">Credit Needed</span><span class="stat-value">Good (670+)</span></div></div><div class="card-divider"></div><div class="card-pros-cons"><div class="pros"><div class="pros-title">PROS</div><ul><li>Industry-leading 6% at supermarkets</li><li>6% on streaming (Netflix, Disney+, etc.)</li><li>3% at gas stations</li><li>$0 fee first year</li></ul></div><div class="cons"><div class="cons-title">CONS</div><ul><li>$95 fee after year 1</li><li>6% capped at $6,000/year then 1%</li><li>Does not include Walmart/Target</li></ul></div></div><a href="https://www.cardratings.com/bestcards/cash-back-credit-cards.php?src=705663" class="card-cta">Compare Grocery Cards &rarr;</a><p class="card-disclaimer">Rates and offers subject to change. Verify terms before applying.</p></div>
 
-        <div class="card-review"><div class="card-top"><div class="card-info"><div class="card-rank">#2</div><div class="card-visual" style="background: linear-gradient(135deg, #003DA5, #001a5c);"><span>CITI</span></div><div><h3>Citi Custom Cash</h3><div class="card-best-for">Best No-Fee Grocery Card</div></div></div><div class="card-rating"><span class="card-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="card-rating-num">4.8/5</span></div></div><div class="card-stats"><div class="card-stat-pill"><span class="stat-label">Grocery Rate</span><span class="stat-value">5% auto top category</span></div><div class="card-stat-pill"><span class="stat-label">Welcome Bonus</span><span class="stat-value">$200</span></div><div class="card-stat-pill"><span class="stat-label">Annual Fee</span><span class="stat-value">$0</span></div><div class="card-stat-pill"><span class="stat-label">Credit Needed</span><span class="stat-value">Good (670+)</span></div></div><div class="card-divider"></div><div class="card-pros-cons"><div class="pros"><div class="pros-title">PROS</div><ul><li>5% on groceries automatically if that is your top spend</li><li>No annual fee</li><li>No activation required</li></ul></div><div class="cons"><div class="cons-title">CONS</div><ul><li>5% capped at $500 per billing cycle</li><li>Only one 5% category at a time</li></ul></div></div><a href="https://www.cardratings.com/bestcards/cash-back-credit-cards.php?src=705663" class="card-cta">Compare Grocery Cards &rarr;</a><p class="card-disclaimer">Rates and offers subject to change. Verify terms before applying.</p></div>
+        <div class="card-review"><div class="card-top"><div class="card-info"><div class="card-rank">#2</div><div class="card-visual" data-issuer="CITI" style="background: linear-gradient(135deg, #003087, #e31837);"><div class="cv-chip"></div><div class="cv-dots">●●●● ●●●● ●●●● 1234</div><div class="cv-name">Citi Custom Cash</div><div class="cv-network">MASTERCARD</div></div><div><h3>Citi Custom Cash</h3><div class="card-best-for">Best No-Fee Grocery Card</div></div></div><div class="card-rating"><span class="card-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="card-rating-num">4.8/5</span></div></div><div class="card-stats"><div class="card-stat-pill"><span class="stat-label">Grocery Rate</span><span class="stat-value">5% auto top category</span></div><div class="card-stat-pill"><span class="stat-label">Welcome Bonus</span><span class="stat-value">$200</span></div><div class="card-stat-pill"><span class="stat-label">Annual Fee</span><span class="stat-value">$0</span></div><div class="card-stat-pill"><span class="stat-label">Credit Needed</span><span class="stat-value">Good (670+)</span></div></div><div class="card-divider"></div><div class="card-pros-cons"><div class="pros"><div class="pros-title">PROS</div><ul><li>5% on groceries automatically if that is your top spend</li><li>No annual fee</li><li>No activation required</li></ul></div><div class="cons"><div class="cons-title">CONS</div><ul><li>5% capped at $500 per billing cycle</li><li>Only one 5% category at a time</li></ul></div></div><a href="https://www.cardratings.com/bestcards/cash-back-credit-cards.php?src=705663" class="card-cta">Compare Grocery Cards &rarr;</a><p class="card-disclaimer">Rates and offers subject to change. Verify terms before applying.</p></div>
 
-        <div class="card-review"><div class="card-top"><div class="card-info"><div class="card-rank">#3</div><div class="card-visual" style="background: linear-gradient(135deg, #006fcf, #4db8ff);"><span>AMEX</span></div><div><h3>Blue Cash Everyday from Amex</h3><div class="card-best-for">Best No-Fee Amex Grocery</div></div></div><div class="card-rating"><span class="card-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="card-rating-num">4.7/5</span></div></div><div class="card-stats"><div class="card-stat-pill"><span class="stat-label">Grocery Rate</span><span class="stat-value">3% U.S. supermarkets (up to $6K/yr)</span></div><div class="card-stat-pill"><span class="stat-label">Other Rewards</span><span class="stat-value">3% gas stations, 3% online retail</span></div><div class="card-stat-pill"><span class="stat-label">Annual Fee</span><span class="stat-value">$0</span></div><div class="card-stat-pill"><span class="stat-label">Credit Needed</span><span class="stat-value">Good (670+)</span></div></div><div class="card-divider"></div><div class="card-pros-cons"><div class="pros"><div class="pros-title">PROS</div><ul><li>3% at supermarkets with no annual fee</li><li>3% at gas stations</li><li>Solid for moderate grocery spenders</li></ul></div><div class="cons"><div class="cons-title">CONS</div><ul><li>3% lower than Preferred's 6%</li><li>Same $6K annual cap</li></ul></div></div><a href="https://www.cardratings.com/bestcards/cash-back-credit-cards.php?src=705663" class="card-cta">Compare Grocery Cards &rarr;</a><p class="card-disclaimer">Rates and offers subject to change. Verify terms before applying.</p></div>
+        <div class="card-review"><div class="card-top"><div class="card-info"><div class="card-rank">#3</div><div class="card-visual" data-issuer="AMEX" style="background: linear-gradient(135deg, #006FCF, #00175A);"><div class="cv-chip"></div><div class="cv-dots">●●●● ●●●● ●●●● 1234</div><div class="cv-name">from Amex</div><div class="cv-network">AMEX</div></div><div><h3>Blue Cash Everyday from Amex</h3><div class="card-best-for">Best No-Fee Amex Grocery</div></div></div><div class="card-rating"><span class="card-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="card-rating-num">4.7/5</span></div></div><div class="card-stats"><div class="card-stat-pill"><span class="stat-label">Grocery Rate</span><span class="stat-value">3% U.S. supermarkets (up to $6K/yr)</span></div><div class="card-stat-pill"><span class="stat-label">Other Rewards</span><span class="stat-value">3% gas stations, 3% online retail</span></div><div class="card-stat-pill"><span class="stat-label">Annual Fee</span><span class="stat-value">$0</span></div><div class="card-stat-pill"><span class="stat-label">Credit Needed</span><span class="stat-value">Good (670+)</span></div></div><div class="card-divider"></div><div class="card-pros-cons"><div class="pros"><div class="pros-title">PROS</div><ul><li>3% at supermarkets with no annual fee</li><li>3% at gas stations</li><li>Solid for moderate grocery spenders</li></ul></div><div class="cons"><div class="cons-title">CONS</div><ul><li>3% lower than Preferred's 6%</li><li>Same $6K annual cap</li></ul></div></div><a href="https://www.cardratings.com/bestcards/cash-back-credit-cards.php?src=705663" class="card-cta">Compare Grocery Cards &rarr;</a><p class="card-disclaimer">Rates and offers subject to change. Verify terms before applying.</p></div>
 
-        <div class="card-review"><div class="card-top"><div class="card-info"><div class="card-rank">#4</div><div class="card-visual" style="background: linear-gradient(135deg, #0a3d62, #1e3799);"><span>PRIME</span></div><div><h3>Amazon Prime Rewards Visa</h3><div class="card-best-for">Best for Whole Foods</div></div></div><div class="card-rating"><span class="card-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="card-rating-num">4.6/5</span></div></div><div class="card-stats"><div class="card-stat-pill"><span class="stat-label">Grocery Rate</span><span class="stat-value">5% Amazon/Whole Foods</span></div><div class="card-stat-pill"><span class="stat-label">Other Rewards</span><span class="stat-value">2% restaurants/gas/drugstores</span></div><div class="card-stat-pill"><span class="stat-label">Annual Fee</span><span class="stat-value">$0 (Prime required)</span></div><div class="card-stat-pill"><span class="stat-label">Credit Needed</span><span class="stat-value">Good (670+)</span></div></div><div class="card-divider"></div><div class="card-pros-cons"><div class="pros"><div class="pros-title">PROS</div><ul><li>5% on all Whole Foods purchases</li><li>5% on Amazon grocery orders</li><li>No annual fee with Prime</li></ul></div><div class="cons"><div class="cons-title">CONS</div><ul><li>Requires Prime membership</li><li>Only 1% at non-Whole Foods supermarkets</li></ul></div></div><a href="https://www.cardratings.com/bestcards/cash-back-credit-cards.php?src=705663" class="card-cta">Compare Grocery Cards &rarr;</a><p class="card-disclaimer">Rates and offers subject to change. Verify terms before applying.</p></div>
+        <div class="card-review"><div class="card-top"><div class="card-info"><div class="card-rank">#4</div><div class="card-visual" data-issuer="PRIME" style="background: linear-gradient(135deg, #003087, #117aca);"><div class="cv-chip"></div><div class="cv-dots">●●●● ●●●● ●●●● 1234</div><div class="cv-name">Rewards Visa</div><div class="cv-network">VISA</div></div><div><h3>Amazon Prime Rewards Visa</h3><div class="card-best-for">Best for Whole Foods</div></div></div><div class="card-rating"><span class="card-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="card-rating-num">4.6/5</span></div></div><div class="card-stats"><div class="card-stat-pill"><span class="stat-label">Grocery Rate</span><span class="stat-value">5% Amazon/Whole Foods</span></div><div class="card-stat-pill"><span class="stat-label">Other Rewards</span><span class="stat-value">2% restaurants/gas/drugstores</span></div><div class="card-stat-pill"><span class="stat-label">Annual Fee</span><span class="stat-value">$0 (Prime required)</span></div><div class="card-stat-pill"><span class="stat-label">Credit Needed</span><span class="stat-value">Good (670+)</span></div></div><div class="card-divider"></div><div class="card-pros-cons"><div class="pros"><div class="pros-title">PROS</div><ul><li>5% on all Whole Foods purchases</li><li>5% on Amazon grocery orders</li><li>No annual fee with Prime</li></ul></div><div class="cons"><div class="cons-title">CONS</div><ul><li>Requires Prime membership</li><li>Only 1% at non-Whole Foods supermarkets</li></ul></div></div><a href="https://www.cardratings.com/bestcards/cash-back-credit-cards.php?src=705663" class="card-cta">Compare Grocery Cards &rarr;</a><p class="card-disclaimer">Rates and offers subject to change. Verify terms before applying.</p></div>
 
-        <div class="card-review"><div class="card-top"><div class="card-info"><div class="card-rank">#5</div><div class="card-visual" style="background: linear-gradient(135deg, #b31942, #8b0000);"><span>BOFA</span></div><div><h3>Bank of America Customized Cash Rewards</h3><div class="card-best-for">Best Flexible Grocery Card</div></div></div><div class="card-rating"><span class="card-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="card-rating-num">4.5/5</span></div></div><div class="card-stats"><div class="card-stat-pill"><span class="stat-label">Grocery Rate</span><span class="stat-value">3% choice category (choose grocery)</span></div><div class="card-stat-pill"><span class="stat-label">Other Rewards</span><span class="stat-value">2% wholesale clubs, 1% everything</span></div><div class="card-stat-pill"><span class="stat-label">Annual Fee</span><span class="stat-value">$0</span></div><div class="card-stat-pill"><span class="stat-label">Credit Needed</span><span class="stat-value">Good (670+)</span></div></div><div class="card-divider"></div><div class="card-pros-cons"><div class="pros"><div class="pros-title">PROS</div><ul><li>Choose groceries as your 3% category</li><li>2% at wholesale clubs like Costco</li><li>BofA Preferred Rewards can boost to 5.25%</li></ul></div><div class="cons"><div class="cons-title">CONS</div><ul><li>3% capped at $2,500/quarter</li><li>Lower base rate than competitors</li></ul></div></div><a href="https://www.cardratings.com/bestcards/cash-back-credit-cards.php?src=705663" class="card-cta">Compare Grocery Cards &rarr;</a><p class="card-disclaimer">Rates and offers subject to change. Verify terms before applying.</p></div>
+        <div class="card-review"><div class="card-top"><div class="card-info"><div class="card-rank">#5</div><div class="card-visual" data-issuer="BOFA" style="background: linear-gradient(135deg, #b31942, #8b0000);"><div class="cv-chip"></div><div class="cv-dots">●●●● ●●●● ●●●● 1234</div><div class="cv-name">Cash Rewards</div><div class="cv-network">VISA</div></div><div><h3>Bank of America Customized Cash Rewards</h3><div class="card-best-for">Best Flexible Grocery Card</div></div></div><div class="card-rating"><span class="card-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="card-rating-num">4.5/5</span></div></div><div class="card-stats"><div class="card-stat-pill"><span class="stat-label">Grocery Rate</span><span class="stat-value">3% choice category (choose grocery)</span></div><div class="card-stat-pill"><span class="stat-label">Other Rewards</span><span class="stat-value">2% wholesale clubs, 1% everything</span></div><div class="card-stat-pill"><span class="stat-label">Annual Fee</span><span class="stat-value">$0</span></div><div class="card-stat-pill"><span class="stat-label">Credit Needed</span><span class="stat-value">Good (670+)</span></div></div><div class="card-divider"></div><div class="card-pros-cons"><div class="pros"><div class="pros-title">PROS</div><ul><li>Choose groceries as your 3% category</li><li>2% at wholesale clubs like Costco</li><li>BofA Preferred Rewards can boost to 5.25%</li></ul></div><div class="cons"><div class="cons-title">CONS</div><ul><li>3% capped at $2,500/quarter</li><li>Lower base rate than competitors</li></ul></div></div><a href="https://www.cardratings.com/bestcards/cash-back-credit-cards.php?src=705663" class="card-cta">Compare Grocery Cards &rarr;</a><p class="card-disclaimer">Rates and offers subject to change. Verify terms before applying.</p></div>
     </div></section>
 
     <section id="comparison"><div class="container">

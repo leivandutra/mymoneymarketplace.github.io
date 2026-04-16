@@ -325,6 +325,97 @@
             .header-cta { padding: 6px 14px; font-size: 13px; }
             .bottom-cta h2 { font-size: 24px; }
         }
+    
+        /* card-visual-upgraded-v1 */
+        /* Realistic card mockup (upgraded from flat placeholder) */
+        .card-visual {
+            position: relative;
+            width: 104px;
+            height: 64px;
+            border-radius: 8px;
+            overflow: hidden;
+            flex-shrink: 0;
+            display: block;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-visual:hover {
+            transform: translateY(-4px) rotate(-1.5deg);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.28);
+        }
+        .card-visual::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.20) 45%, rgba(255,255,255,0.05) 55%, transparent 70%);
+            pointer-events: none;
+            z-index: 2;
+        }
+        .card-visual .cv-chip {
+            position: absolute;
+            top: 9px;
+            left: 9px;
+            width: 14px;
+            height: 10px;
+            background: linear-gradient(135deg, #f9d67a 0%, #d4a545 55%, #a37a22 100%);
+            border-radius: 2px;
+            box-shadow: inset 0 0 0 0.5px rgba(0,0,0,0.3), inset 1px 1px 0 rgba(255,255,255,0.35);
+            z-index: 1;
+        }
+        .card-visual .cv-chip::after {
+            content: '';
+            position: absolute;
+            inset: 1.5px;
+            border-radius: 1px;
+            background:
+                linear-gradient(to right, transparent 46%, rgba(0,0,0,0.28) 46%, rgba(0,0,0,0.28) 54%, transparent 54%),
+                linear-gradient(to bottom, transparent 30%, rgba(0,0,0,0.28) 30%, rgba(0,0,0,0.28) 38%, transparent 38%, transparent 62%, rgba(0,0,0,0.28) 62%, rgba(0,0,0,0.28) 70%, transparent 70%);
+        }
+        .card-visual .cv-dots {
+            position: absolute;
+            bottom: 22px;
+            left: 9px;
+            right: 9px;
+            color: rgba(255,255,255,0.85);
+            font-family: 'Courier New', monospace;
+            font-size: 8px;
+            letter-spacing: 1.5px;
+            line-height: 1;
+            z-index: 1;
+        }
+        .card-visual .cv-name {
+            position: absolute;
+            bottom: 7px;
+            left: 9px;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 7px;
+            letter-spacing: 0.4px;
+            text-transform: uppercase;
+            max-width: 62%;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            line-height: 1;
+            z-index: 1;
+        }
+        .card-visual .cv-network {
+            position: absolute;
+            bottom: 5px;
+            right: 7px;
+            color: rgba(255,255,255,0.95);
+            font-family: Arial, sans-serif;
+            font-weight: 900;
+            font-style: italic;
+            font-size: 9px;
+            letter-spacing: 0.5px;
+            line-height: 1;
+            z-index: 1;
+        }
+        /* Legacy span (no longer rendered, but keep rule harmless) */
+        .card-visual > span { display: none; }
+
     </style>
 </head>
 <body>
@@ -425,7 +516,7 @@
                 <div class="card-top">
                     <div class="card-info">
                         <div class="card-rank">#1</div>
-                        <div class="card-visual" style="background: linear-gradient(135deg, #b31942, #8b0000);"><span>WF</span></div>
+                        <div class="card-visual" data-issuer="WF" style="background: linear-gradient(135deg, #c8102e, #8b0000);"><div class="cv-chip"></div><div class="cv-dots">●●●● ●●●● ●●●● 1234</div><div class="cv-name">Active Cash</div><div class="cv-network">VISA</div></div>
                         <div>
                             <h3>Wells Fargo Active Cash</h3>
                             <div class="card-best-for">Best Flat Rate No-Fee</div>
@@ -470,7 +561,7 @@
                 <div class="card-top">
                     <div class="card-info">
                         <div class="card-rank">#2</div>
-                        <div class="card-visual" style="background: linear-gradient(135deg, #003DA5, #001a5c);"><span>CITI</span></div>
+                        <div class="card-visual" data-issuer="CITI" style="background: linear-gradient(135deg, #003087, #e31837);"><div class="cv-chip"></div><div class="cv-dots">●●●● ●●●● ●●●● 1234</div><div class="cv-name">Citi Custom Cash</div><div class="cv-network">MASTERCARD</div></div>
                         <div>
                             <h3>Citi Custom Cash</h3>
                             <div class="card-best-for">Best Auto-Category No-Fee</div>
@@ -514,7 +605,7 @@
                 <div class="card-top">
                     <div class="card-info">
                         <div class="card-rank">#3</div>
-                        <div class="card-visual" style="background: linear-gradient(135deg, #1a6bb0, #0d4a7d);"><span>CHASE</span></div>
+                        <div class="card-visual" data-issuer="CHASE" style="background: linear-gradient(135deg, #003087, #117aca);"><div class="cv-chip"></div><div class="cv-dots">●●●● ●●●● ●●●● 1234</div><div class="cv-name">Freedom Unlimited</div><div class="cv-network">VISA</div></div>
                         <div>
                             <h3>Chase Freedom Unlimited</h3>
                             <div class="card-best-for">Best for Dining No-Fee</div>
@@ -557,7 +648,7 @@
                 <div class="card-top">
                     <div class="card-info">
                         <div class="card-rank">#4</div>
-                        <div class="card-visual" style="background: linear-gradient(135deg, #f47b20, #d35400);"><span>DISC</span></div>
+                        <div class="card-visual" data-issuer="DISC" style="background: linear-gradient(135deg, #f77f00, #d4620a);"><div class="cv-chip"></div><div class="cv-dots">●●●● ●●●● ●●●● 1234</div><div class="cv-name">Cash Back</div><div class="cv-network">DISCOVER</div></div>
                         <div>
                             <h3>Discover it Cash Back</h3>
                             <div class="card-best-for">Best First-Year No-Fee</div>
@@ -601,7 +692,7 @@
                 <div class="card-top">
                     <div class="card-info">
                         <div class="card-rank">#5</div>
-                        <div class="card-visual" style="background: linear-gradient(135deg, #1a1a2e, #16213e);"><span>C1</span></div>
+                        <div class="card-visual" data-issuer="C1" style="background: linear-gradient(135deg, #1a1a1a, #2d2d2d);"><div class="cv-chip"></div><div class="cv-dots">●●●● ●●●● ●●●● 1234</div><div class="cv-name">One Quicksilver</div><div class="cv-network">VISA</div></div>
                         <div>
                             <h3>Capital One Quicksilver</h3>
                             <div class="card-best-for">Best Simple No-Fee</div>
