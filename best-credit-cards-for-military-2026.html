@@ -911,7 +911,7 @@
       city: seg.city,
       referrerPage: window.location.pathname,
       utmSource: getUtm('utm_source') || 'organic',
-      utmMedium: getUtm('utm_medium') || 'parasite',
+      utmMedium: getUtm('utm_medium') || 'referral',
       utmCampaign: getUtm('utm_campaign') || (window.location.pathname.replace(/^\/+|\/+$/g, '').replace(/\.html$/, '')),
       timestamp: new Date().toISOString()
     };
